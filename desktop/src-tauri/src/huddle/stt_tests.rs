@@ -491,7 +491,8 @@ mod silence_experiment {
             audio.extend(tail);
             audio.extend(std::iter::repeat_n(0.0f32, 16_000)); // stop-flush 1s zeros
 
-            let (live_tx, mut live_rx) = tokio::sync::mpsc::channel::<super::super::LiveEvent>(1024);
+            let (live_tx, mut live_rx) =
+                tokio::sync::mpsc::channel::<super::super::LiveEvent>(1024);
             let (text_tx, _text_rx) = tokio::sync::mpsc::channel::<String>(64);
             let tts_active = Arc::new(AtomicBool::new(false));
 
